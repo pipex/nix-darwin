@@ -40,7 +40,7 @@
 
     git-crypt # transparent file encryption in git
     htop # interactive process viewer
-    
+
     bitwarden-cli # The command line vault (Windows, macOS, & Linux).
     lazygit # Git TUI
 
@@ -49,25 +49,19 @@
       hash = "sha256-/Kvp81qOYzpTkWECePg+MM7EW4FxqEKqimdVqPlyAsE=";
     })
 
+    (pkgs.callPackage ../pkgs/shell-gpt.nix {})
 
-    (pkgs.callPackage ../pkgs/shell-gpt.nix { })
-    
     # Programming
     nodejs_20 # A JavaScript runtime built on Chrome's V8 JavaScript engine
     shellcheck # shell script analysis tool
     shfmt # A shell parser, formatter, and interpreter (POSIX/Bash/mksh)
     rustup # Rust updater
     alejandra # The Uncompromising Nix Code Formatter
-    deadnix # Nix 
+    deadnix # Nix
     statix # Nix
     go # Golang
     hadolint # Dockerfile linter, validate inline bash scripts
     luarocks # Lua linter
-
-    # Fonts
-    (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
-
-
   ];
 
   # Install AstroVim

@@ -34,24 +34,25 @@
   #   pkgs.zsh
   # ];
 
-  # # Fonts
-  # fonts = {
-  #   # use fonts specified by user rather than default ones
-  #   fontDir.enable = true;
+   # Fonts
+   fonts = {
+     # use fonts specified by user rather than default ones
+     fontDir.enable = true;
 
-  #   fonts = with pkgs; [
-  #     # icon fonts
-  #     material-design-icons
-  #     font-awesome
+     fonts = with pkgs; [
+       # icon fonts
+       # material-design-icons
+       # font-awesome
 
-  #     # nerdfonts
-  #     (nerdfonts.override {
-  #       fonts = [
-  #         "FiraCode"
-  #         "JetBrainsMono"
-  #         "Iosevka"
-  #       ];
-  #     })
-  #   ];
-  # };
+       # nerdfonts
+       (nerdfonts.override {
+         fonts = [
+          "SourceCodePro"
+           # "FiraCode"
+           # "JetBrainsMono"
+           # "Iosevka"
+         ];
+       })
+     ];
+   };
 }
