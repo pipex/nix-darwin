@@ -198,9 +198,9 @@
     #   purescript = {
     #     symbol = "purs ";
     #   };
-    #   python = {
-    #     symbol = "py ";
-    #   };
+      python = {
+        symbol = "python ";
+      };
     #   raku = {
     #     symbol = "raku ";
     #   };
