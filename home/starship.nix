@@ -71,9 +71,9 @@
     #   directory = {
     #     read_only = " ro";
     #   };
-    #   docker_context = {
-    #     symbol = "docker ";
-    #   };
+      docker_context = {
+        disabled = true;
+      };
     #   elixir = {
     #     symbol = "exs ";
     #   };
@@ -113,12 +113,12 @@
     #   kotlin = {
     #     symbol = "kt ";
     #   };
-    #   lua = {
-    #     symbol = "lua ";
-    #   };
-    #   nodejs = {
-    #     symbol = "nodejs ";
-    #   };
+      lua = {
+        symbol = "lua ";
+      };
+      nodejs = {
+        symbol = "nodejs ";
+      };
     #   memory_usage = {
     #     symbol = "memory ";
     #   };
@@ -128,9 +128,9 @@
     #   nim = {
     #     symbol = "nim ";
     #   };
-    #   nix_shell = {
-    #     symbol = "nix ";
-    #   };
+      nix_shell = {
+        disabled = true;
+      };
     #   ocaml = {
     #     symbol = "ml ";
     #   };
@@ -207,9 +207,9 @@
     #   ruby = {
     #     symbol = "rb ";
     #   };
-    #   rust = {
-    #     symbol = "rs ";
-    #   };
+      rust = {
+        symbol = "rust ";
+      };
     #   scala = {
     #     symbol = "scala ";
     #   };
