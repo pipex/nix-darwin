@@ -40,7 +40,7 @@
     extraConfig = {
       core = {
         editor = "nvim";
-        pager = "cat";
+        # pager = "cat";
       };
       color = {
         ui = true;

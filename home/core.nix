@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -49,7 +53,7 @@
       hash = "sha256-/Kvp81qOYzpTkWECePg+MM7EW4FxqEKqimdVqPlyAsE=";
     })
 
-    (pkgs.callPackage ../pkgs/shell-gpt.nix {})
+    # (pkgs.callPackage ../pkgs/shell-gpt.nix {})
 
     # Programming
     nodejs_20 # A JavaScript runtime built on Chrome's V8 JavaScript engine
@@ -66,13 +70,13 @@
 
   # Install AstroVim
   xdg.configFile."nvim".recursive = true;
-  # xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
-  #   owner = "pipex";
-  #   repo = "astrovim";
-  #   rev = "c56993d0a30e745cda6673bbfa1daabb0cadb8a1";
-  #   sha256 = "02v0dq6893dvq9l9iih1qj2mp39f0a2gl81ww88qf501c3f081l1";
-  # };
-  xdg.configFile."nvim".source = ../dotfiles/astronvim;
+  xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
+    owner = "pipex";
+    repo = "astrovim";
+    rev = "c56993d0a30e745cda6673bbfa1daabb0cadb8a1";
+    sha256 = "02v0dq6893dvq9l9iih1qj2mp39f0a2gl81ww88qf501c3f081l1";
+  };
+  # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
   xdg.configFile."oh-my-zsh".source = ../dotfiles/oh-my-zsh;
 

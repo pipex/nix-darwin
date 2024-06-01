@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
 
@@ -25,17 +29,17 @@
     initExtra = ''
       export BALENARC_NO_ANALYTICS=1
       export BUILDKIT_PROGRESS=plain
-      
+
       cb() {
         if [ -d .git ]; then
           ([ "$GIT_REPO_HOME" = "" ] || [ ! -d "$GIT_REPO_HOME" ]) && echo "Already in a git repository and not GIT_REPO_HOME defined" && return 1
           cd $GIT_REPO_HOME
         fi
-         
+
         repo="$GIT_REPO"
         folder="$1"
         branch="$1"
-        
+
         [ "$repo" = "" ] && echo "No GIT_REPO environment variable" && return 1
 
         if [ "$folder" = "" ]; then
@@ -63,7 +67,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = ["git"];
       custom = "${config.xdg.configHome}/oh-my-zsh";
       theme = "pipex";
       extraConfig = ''

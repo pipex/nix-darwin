@@ -13,10 +13,10 @@ deploy:
 	$(MAKE) darwin
 
 darwin:
-	nix build .#darwinConfigurations.mercury.system \
+	nix build .#darwinConfigurations.ceres.system \
 		--extra-experimental-features 'nix-command flakes'
 
-	./result/sw/bin/darwin-rebuild switch --flake .#mercury
+	./result/sw/bin/darwin-rebuild switch --flake .#ceres
 
 darwin-debug:
 	nix build .#darwinConfigurations.mercury.system --show-trace --verbose \
