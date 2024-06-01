@@ -50,13 +50,12 @@
       # TecentMetting = 1484048379;
       # QQMusic = 595615424;
       Bitwarden = 1352778147;
+      Magnet = 441258766;
+      JoltOfCaffeine = 1437130425;
     };
 
     taps = [
-      "homebrew/cask"
-      "homebrew/cask-fonts"
       "homebrew/services"
-      "homebrew/cask-versions"
     ];
 
     # `brew install`
@@ -81,6 +80,7 @@
       "zoom"
       "zulip"
       "appcleaner"
+      "iterm2"
     ];
   };
 }
