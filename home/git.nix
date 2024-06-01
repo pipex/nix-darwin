@@ -58,10 +58,10 @@
       };
     };
 
-    # signing = {
-    #   key = "FD3EB16D2161895A";
-    #   signByDefault = true;
-    # };
+    signing = {
+      key = "2CE4D30172CD04D5";
+      signByDefault = true;
+    };
 
     # https://nix-community.github.io/home-manager/options.html#opt-programs.git.delta.enable
     # https://github.com/dandavison/delta
