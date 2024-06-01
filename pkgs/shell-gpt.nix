@@ -1,6 +1,7 @@
 {
   pkgs ? import <nixpkgs> {},
   version,
+  hash,
 }:
 pkgs.python3.pkgs.buildPythonPackage rec {
   name = "shell-gpt";
@@ -8,7 +9,7 @@ pkgs.python3.pkgs.buildPythonPackage rec {
 
   src = builtins.fetchTarball {
     url = "https://github.com/TheR1D/shell_gpt/releases/download/${version}/shell_gpt-${version}.tar.gz";
-    sha256 = "0wkvk8gvyp24mq9nfjqw3apkr1xgcmvhgznwj3c8lqk4k4xwzyf6";
+    sha256 = hash;
   };
 
   doCheck = false;

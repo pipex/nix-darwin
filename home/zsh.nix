@@ -67,7 +67,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git"];
+      plugins = ["git docker"];
       custom = "${config.xdg.configHome}/oh-my-zsh";
       theme = "pipex";
       extraConfig = ''
