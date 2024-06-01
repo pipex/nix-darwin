@@ -18,7 +18,7 @@
     package = pkgs.gitAndTools.gitFull;
 
     userName = "Felipe Lalanne";
-    userEmail = "1822826+pipex@users.noreply.github.com";
+    userEmail = "felipe@balena.io";
 
     ignores = [
       ".DS_Store"
