@@ -1,3 +1,0 @@
-[submodule "dotfiles/astronvim"]
-	path = dotfiles/astronvim
-	url = git@github.com:pipex/astronvim.git

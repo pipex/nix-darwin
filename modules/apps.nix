@@ -68,13 +68,12 @@
     # `brew install --cask`
     casks = [
       "balenaetcher"
-      # "bitwarden"
       "cloudflare-warp"
       "docker"
       "eloston-chromium"
       "firefox"
       "logseq"
-      # "raycast"
+      "raycast"
       "signal"
       "tailscale"
       "zoom"
