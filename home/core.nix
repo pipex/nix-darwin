@@ -83,9 +83,10 @@
 
   xdg.configFile."oh-my-zsh".source = ../dotfiles/oh-my-zsh;
 
-  xdg.configFile."tmux".recursive = true;
-  xdg.configFile."tmux".source = ../dotfiles/tmux;
-  xdg.configFile."tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
+  home.file.".tmux.conf".source = ../dotfiles/tmux/tmux.conf;
+  home.file.".tmux".recursive = true;
+  home.file.".tmux".source = ../dotfiles/tmux;
+  home.file.".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
     owner = "tmux-plugins";
     repo = "tpm";
     rev = "v3.0.0";
