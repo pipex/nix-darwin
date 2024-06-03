@@ -76,7 +76,7 @@
     };
 
     shellAliases = {
-      balena-staging = "BALENARC_BALENA_URL=balena-staging.com BALENARC_DATA_DIRECTORY=~/.balenaStaging balena";
+      balena-support = "BALENARC_DATA_DIRECTORY=~/.balenaSupport balena";
       vi = "nvim";
       lg = "lazygit";
     };
