@@ -19,10 +19,10 @@ darwin:
 	./result/sw/bin/darwin-rebuild switch --flake .#ceres
 
 darwin-debug:
-	nix build .#darwinConfigurations.mercury.system --show-trace --verbose \
+	nix build .#darwinConfigurations.ceres.system --show-trace --verbose \
 		--extra-experimental-features 'nix-command flakes'
 
-	./result/sw/bin/darwin-rebuild switch --flake .#mercury --show-trace --verbose
+	./result/sw/bin/darwin-rebuild switch --flake .#ceres --show-trace --verbose
 
 ############################################################################
 #
