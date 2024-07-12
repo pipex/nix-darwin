@@ -69,6 +69,7 @@
     go # Golang
     hadolint # Dockerfile linter, validate inline bash scripts
     luarocks # Lua linter
+    nixd
   ];
 
   # Install AstroVim
@@ -76,8 +77,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "ffbb732dd70987daa0c71c39c3f32585e52f5fdc";
-    sha256 = "0bgkwyz02h8vdlkifziay9fgbl025jl5svzgfsps6jgy0ack8yyl";
+    rev = "8ece8c2bf293a94a1e1f7accaa1673782800baee";
+    sha256 = "107gcah5x4l8il2g0rb76hqvnn2wrbcl61bl84iqwhjrkpz0ka78";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
