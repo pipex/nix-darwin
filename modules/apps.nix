@@ -52,8 +52,9 @@
       Bitwarden = 1352778147;
       Magnet = 441258766;
       JoltOfCaffeine = 1437130425;
-      Ghostery = 1436953057;
       Pocket = 1477385213;
+      DuckDuckGoSafari = 1482920575;
+      Hush = 1544743900;
     };
 
     taps = [
@@ -79,7 +80,6 @@
       "signal"
       "tailscale"
       "zoom"
-      "zulip"
       "appcleaner"
       "iterm2"
     ];
