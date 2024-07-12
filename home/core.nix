@@ -60,6 +60,7 @@
 
     # Programming
     nodejs_20 # A JavaScript runtime built on Chrome's V8 JavaScript engine
+    bun
     shellcheck # shell script analysis tool
     shfmt # A shell parser, formatter, and interpreter (POSIX/Bash/mksh)
     rustup # Rust updater
