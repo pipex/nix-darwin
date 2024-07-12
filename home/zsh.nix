@@ -8,9 +8,6 @@
 
     enableCompletion = true;
     enableAutosuggestions = true;
-    # syntaxHighlighting = {
-    #   enable = true;
-    # };
     syntaxHighlighting.enable = true;
 
     autocd = true;
@@ -79,6 +76,7 @@
       balena-support = "BALENARC_DATA_DIRECTORY=~/.balenaSupport balena";
       vi = "nvim";
       lg = "lazygit";
+      cd = "z";
     };
 
     localVariables = {

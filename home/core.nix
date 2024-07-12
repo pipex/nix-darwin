@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -78,8 +74,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "8ece8c2bf293a94a1e1f7accaa1673782800baee";
-    sha256 = "107gcah5x4l8il2g0rb76hqvnn2wrbcl61bl84iqwhjrkpz0ka78";
+    rev = "3811dd505b569ec7d94cc85a1de48adb09dc9f8c";
+    sha256 = "16w04027izvkxcgdqvccip99mx9p6wy9ns53nbhws9px556fg0r1";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
@@ -130,6 +126,12 @@
     };
 
     autojump = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
+
+    zoxide = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
