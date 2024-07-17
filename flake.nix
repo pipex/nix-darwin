@@ -20,11 +20,11 @@
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
 
     # home-manager, used for managing user configuration
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs dependencies.
@@ -43,10 +43,10 @@
     # };
 
     # https://github.com/jordanisaacs/homeage/pull/43
-    homeage = {
-      url = "github:jordanisaacs/homeage/pull/43/head";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # homeage = {
+    #   url = "github:jordanisaacs/homeage/pull/43/head";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -55,11 +55,9 @@
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
   outputs = inputs @ {
-    self,
     nixpkgs,
     darwin,
     home-manager,
-    homeage,
     ...
   }: {
     darwinConfigurations.ceres = darwin.lib.darwinSystem {
