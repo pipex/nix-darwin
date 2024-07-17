@@ -41,6 +41,27 @@
         "type": "github"
       }
     },
+    "homeage": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1697874814,
+        "narHash": "sha256-q8U6hCnYmZAyyvxZIj7xLB0cOsXf/fB5tUh9/hDN7sk=",
+        "owner": "jordanisaacs",
+        "repo": "homeage",
+        "rev": "af9852e7234695f1b759a8c5d07d0fd35195a422",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jordanisaacs",
+        "ref": "pull/43/head",
+        "repo": "homeage",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1721116560,
@@ -75,6 +96,7 @@
       "inputs": {
         "darwin": "darwin",
         "home-manager": "home-manager",
+        "homeage": "homeage",
         "nixpkgs": "nixpkgs",
         "nixpkgs-darwin": "nixpkgs-darwin"
       }

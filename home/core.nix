@@ -49,10 +49,10 @@
       hash = "sha256-/Kvp81qOYzpTkWECePg+MM7EW4FxqEKqimdVqPlyAsE=";
     })
 
-    (pkgs.callPackage ../pkgs/shell-gpt.nix {
-      version = "1.4.3";
-      hash = "1ip4216ypjk8p0p69frg006gnl571gfarc6irl63hsln3cmxjz2a";
-    })
+    # (pkgs.callPackage ../pkgs/shell-gpt.nix {
+    #   version = "1.4.3";
+    #   hash = "1ip4216ypjk8p0p69frg006gnl571gfarc6irl63hsln3cmxjz2a";
+    # })
 
     # Programming
     nodejs_20 # A JavaScript runtime built on Chrome's V8 JavaScript engine
@@ -106,7 +106,8 @@
     # useful in bash/zsh prompt, not in nushell.
     eza = {
       enable = true;
-      enableAliases = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
       git = true;
       icons = true;
     };

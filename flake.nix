@@ -43,10 +43,10 @@
     # };
 
     # https://github.com/jordanisaacs/homeage/pull/43
-    # homeage = {
-    #   url = "github:jordanisaacs/homeage/pull/43/head";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    homeage = {
+      url = "github:jordanisaacs/homeage/pull/43/head";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -55,9 +55,11 @@
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
   outputs = inputs @ {
+    self,
     nixpkgs,
     darwin,
     home-manager,
+    homeage,
     ...
   }: {
     darwinConfigurations.ceres = darwin.lib.darwinSystem {
