@@ -100,6 +100,7 @@
       enable = true;
       defaultEditor = true;
       vimAlias = true;
+      package = pkgs.unstable.neovim-unwrapped;
     };
 
     # A modern replacement for ‘ls’

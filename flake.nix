@@ -21,6 +21,7 @@
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # home-manager, used for managing user configuration
     home-manager = {
@@ -57,18 +58,33 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     darwin,
     home-manager,
     homeage,
     ...
-  }: {
+  }: let
+    system = "aarch64-darwin";
+  in {
     darwinConfigurations.ceres = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
+      inherit system;
       modules = [
         ./modules/nix-core.nix
         ./modules/system.nix
         ./modules/apps.nix
         ./modules/host-users.nix
+
+        # Allow use of pkgs.unstable in modules
+        ({...}: {
+          nixpkgs.overlays = [
+            (final: prev: {
+              unstable = import nixpkgs-unstable {
+                inherit system;
+                config.allowUnfree = true;
+              };
+            })
+          ];
+        })
 
         # home manager
         home-manager.darwinModules.home-manager
