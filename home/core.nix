@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -74,8 +78,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "1a9a02c";
-    sha256 = "0bvbm22y7nk4my6j2l2nby0cdfabwznq6z67cppamch8h14y4vd9";
+    rev = "ae0fd57";
+    sha256 = "0yvs9s0bp671l9bx25l5x28a1s3g0dgs0y537pfyjffps5yfgnf5";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
@@ -93,6 +97,13 @@
 
   # Prettier
   home.file.".prettierrc.json".source = ../dotfiles/prettierrc.json;
+
+  # Avoid bugs with npm like https://github.com/NixOS/nixpkgs/issues/16441
+  home.file.".npmrc".text = lib.generators.toINIWithGlobalSection {} {
+    globalSection = {
+      prefix = "~/.npm";
+    };
+  };
 
   programs = {
     # modern vim
