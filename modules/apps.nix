@@ -82,6 +82,8 @@
       "zoom"
       "appcleaner"
       "iterm2"
+      "firefox"
+      "wireshark"
     ];
   };
 }
