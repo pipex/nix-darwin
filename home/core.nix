@@ -40,7 +40,10 @@
 
     # productivity
     glow # markdown previewer in terminal
-    tmux
+
+    # We need to use unstable tmux because of
+    # https://github.com/tmux/tmux/issues/3983
+    unstable.tmux
 
     git-crypt # transparent file encryption in git
     htop # interactive process viewer
