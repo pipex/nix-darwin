@@ -60,6 +60,8 @@
     #   version = "1.4.3";
     #   hash = "1ip4216ypjk8p0p69frg006gnl571gfarc6irl63hsln3cmxjz2a";
     # })
+    bottom # process viewer
+    gdu # go disk analyzer
 
     # Programming
     nodejs_20 # A JavaScript runtime built on Chrome's V8 JavaScript engine
@@ -81,8 +83,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "84b88be";
-    sha256 = "1h9km6v6a2rjy4g8h7njn0dyh16vvxw7nphmkjm1shdyxjw4fz5n";
+    rev = "e25164e";
+    sha256 = "0mchfk6l6fcv10rpvhwjfkh1nivc7hsrv8im000656932miq80a7";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
