@@ -52,8 +52,8 @@
     lazygit # Git TUI
 
     (callPackage ../pkgs/balena-cli.nix {
-      version = "18.1.0";
-      hash = "sha256-/Kvp81qOYzpTkWECePg+MM7EW4FxqEKqimdVqPlyAsE=";
+      version = "20.0.7";
+      hash = "0hw9k006jzf26f9kv346g1sn3s0rjz1k692n1114nqqlh0jsqx80";
     })
 
     # (pkgs.callPackage ../pkgs/shell-gpt.nix {
@@ -76,6 +76,13 @@
     hadolint # Dockerfile linter, validate inline bash scripts
     luarocks # Lua linter
     nixd
+
+    # Docker VM and CLI
+    colima
+    docker
+    kubectl
+
+    unstable.qemu
   ];
 
   # Install AstroVim
@@ -83,8 +90,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "e25164e";
-    sha256 = "0mchfk6l6fcv10rpvhwjfkh1nivc7hsrv8im000656932miq80a7";
+    rev = "a20a7d1";
+    sha256 = "098hdka26wvssjffmj9nlyalzs4iwxck8xsfh1k4d3i52j9ibnf3";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 

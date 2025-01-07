@@ -21,6 +21,8 @@
     profileExtra = ''
       # Set PATH, MANPATH, etc., for Homebrew.
       eval "$(/opt/homebrew/bin/brew shellenv)"
+
+      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
     '';
 
     initExtra = ''

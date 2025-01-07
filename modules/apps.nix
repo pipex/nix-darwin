@@ -73,7 +73,6 @@
       "balenaetcher"
       # "bitwarden"
       "cloudflare-warp"
-      "docker"
       "eloston-chromium"
       "logseq"
       "raycast"
