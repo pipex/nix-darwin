@@ -34,7 +34,6 @@
     gnupg
     gdu
     mosh
-    reattach-to-user-namespace # For tmux copy/paste
     libiconv
     colordiff
 
@@ -90,8 +89,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "a20a7d1";
-    sha256 = "098hdka26wvssjffmj9nlyalzs4iwxck8xsfh1k4d3i52j9ibnf3";
+    rev = "1b193d9";
+    sha256 = "06bn51jkqldfrj2v7kxp92fsgq0i3va1nl8spkmmx00950npa0b5";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
@@ -148,12 +147,6 @@
       enable = true;
       settings.git_protocol = "ssh";
       gitCredentialHelper.enable = true;
-    };
-
-    autojump = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
     };
 
     zoxide = {
