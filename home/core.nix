@@ -47,7 +47,6 @@
     git-crypt # transparent file encryption in git
     htop # interactive process viewer
 
-    bitwarden-cli # The command line vault (Windows, macOS, & Linux).
     lazygit # Git TUI
 
     (callPackage ../pkgs/balena-cli.nix {
@@ -89,8 +88,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "82e0f2e";
-    sha256 = "0wn4qbb944xa1pywzamjfrmg3knwh9va1cw0wiq8zwk8brpsdig1";
+    rev = "ab8d2e1";
+    sha256 = "1ix71z1mss79kiq8pl0w51jmkvf3iw9hqaild0yfwb6nnlpy3asy";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
@@ -132,7 +131,7 @@
       enableZshIntegration = true;
       enableBashIntegration = true;
       git = true;
-      icons = true;
+      icons = "auto";
     };
 
     # skim provides a single executable: sk.
