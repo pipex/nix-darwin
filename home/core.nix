@@ -88,8 +88,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "0ad219a";
-    sha256 = "04gv5phczk0k79zgkj3px8z3ls7c86gzn282xdjms1667bhc98sr";
+    rev = "7192b23";
+    sha256 = "0nv001daa6x72d6xsx8797w4jgs33q2c2sg4mm3fis8ks20bz903";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 

@@ -73,6 +73,8 @@
       "balenaetcher"
       # "bitwarden"
       "cloudflare-warp"
+      "docker"
+      # "colima"
       "eloston-chromium"
       "logseq"
       "raycast"
