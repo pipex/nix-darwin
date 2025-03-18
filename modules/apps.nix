@@ -54,7 +54,6 @@
       JoltOfCaffeine = 1437130425;
       Pocket = 1477385213;
       DuckDuckGoSafari = 1482920575;
-      Hush = 1544743900;
     };
 
     taps = [
@@ -74,7 +73,6 @@
       # "bitwarden"
       "cloudflare-warp"
       "docker"
-      # "colima"
       "eloston-chromium"
       "logseq"
       "raycast"
@@ -83,8 +81,11 @@
       "zoom"
       "appcleaner"
       "iterm2"
-      "firefox"
       "wireshark"
+      {
+        name = "librewolf"; 
+        args = { no_quarantine = true; };
+      }
     ];
   };
 }
