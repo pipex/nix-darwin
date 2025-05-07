@@ -65,6 +65,10 @@
       "httpie" # http client
       "diffutils" # diff tool
       "mas" # Mac App Store CLI
+      "podman"
+      "mosh"
+      "pinentry-mac"
+      "ykman"
     ];
 
     # `brew install --cask`

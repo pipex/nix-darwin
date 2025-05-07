@@ -22,7 +22,7 @@
       # Set PATH, MANPATH, etc., for Homebrew.
       eval "$(/opt/homebrew/bin/brew shellenv)"
 
-      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.npm/bin"
+      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.npm/bin:$HOME/.cargo/bin"
     '';
 
     initExtra = ''
