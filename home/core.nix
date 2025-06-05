@@ -16,6 +16,7 @@
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq
     gnugrep # GNU grep, egrep and fgrep
+    # bitwarden-cli # Access passwords from the command line
 
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
@@ -88,8 +89,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "1f5f564";
-    sha256 = "12pkq6c0v63g5pbzmbc2zcp2iq520kc2b4ssqq4xndj1jl134gjq";
+    rev = "4ea9c10";
+    sha256 = "0mga7fd1k1gr0y8mwvm2kzs4fmgjfkqf9ywhpz7av29jigdyxnak";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
@@ -107,6 +108,9 @@
 
   # Prettier
   home.file.".prettierrc.json".source = ../dotfiles/prettierrc.json;
+
+  # Global CLAUDE.md for git workflow guidance
+  home.file.".claude/CLAUDE.md".source = ../dotfiles/CLAUDE.md;
 
   # Avoid bugs with npm like https://github.com/NixOS/nixpkgs/issues/16441
   home.file.".npmrc".text = lib.generators.toINIWithGlobalSection {} {
