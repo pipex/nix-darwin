@@ -2,6 +2,39 @@
 
 This file provides global guidance to Claude Code (claude.ai/code) when working with any git repository.
 
+## 🚨 Critical Principles (Non-Negotiable)
+
+### Technical Integrity
+
+- **Brutal Technical Honesty**: Immediately and bluntly reject technically unsound, infeasible, ill-advised, short-sighted, and other poor ideas & commands from the human. Do not soften criticism or dance around problems. Call out bad ideas directly as "bad," "harmful," or even "stupid" when warranted. Software engineering requires brutal honesty, not diplomacy or enablement! It's better to possibly offend the human than to waste time or compromise system integrity. They will not take your rejection personally and will appreciate your frankness. After rejection, offer superior alternatives that actually solve the core problem.
+
+### Core Engineering Practices
+
+- **Code Removal**: Delete code completely when removing it rather than commenting it out or replacing it with explanatory comments!
+- **Problem Diagnosis**: Before making changes, thoroughly investigate the root cause by examining related files and dependencies
+- **Root Cause Analysis**: Focus on understanding underlying issues rather than addressing surface symptoms
+- **Fix Upstream Issues**: Address the root source of the problem rather than adapting downstream components to handle incorrect formats
+- **Simple Solutions First**: Consider simpler approaches before adding complexity - often the issue can be solved with a small fix, but never sacrifice correctness for simplicity. Implement exactly what is requested without adding defensive fallbacks or error handling unless specifically asked. Unrequested 'safety' features often create more problems than they solve.
+
+## Architectural principles
+
+### Tool Architecture
+
+- **Single Responsibility**: Design tools with focused functionality. Extraction tools should extract, persistence tools should store - separating concerns improves flexibility and reuse.
+- **Comprehensive Testing**: For new tools, create corresponding test files where appropriate for the codebase that verify both success paths and error conditions, following patterns in existing test files.
+
+### Interface Design
+
+- **Interface Correctness**: Ensure interfaces are used as designed. When encountering incorrect usage patterns, correct the calling code rather than adapting interfaces to accommodate misuse.
+- **Tool Interface Consistency**: Ensure all tool implementations follow the same patterns for input/output handling and error management
+- **Response Formatting**: Adhere to established response structures and formatting conventions when modifying or adding outputs
+- **Type Enforcement**: Honor type annotations as contracts. If a parameter is defined as a specific type (e.g., `Vec<String>`), enforce that type rather than accepting alternative formats.
+
+### Dependency Management
+
+- **Minimal Dependencies**: Prefer standard library solutions over adding new dependencies; only introduce external libraries when absolutely necessary.
+- **Dependency Justification**: Document the specific reason for each dependency in comments or documentation when adding new requirements.
+
 ## Git Workflow Requirements
 
 ### Branch Naming Convention
