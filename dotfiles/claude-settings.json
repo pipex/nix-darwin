@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo fmt)",
+      "Bash(cargo build:*)",
+      "Bash(cargo test:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run test:*)",
+      "Bash(gh pr view:*)",
+      "Read(~/.zshrc)"
+    ],
+    "deny": [
+      "Bash(curl:*)"
+    ]
+  },
+  "env": {}
+}

@@ -6,7 +6,7 @@ This file provides global guidance to Claude Code (claude.ai/code) when working 
 
 ### Technical Integrity
 
-- **Brutal Technical Honesty**: Immediately and bluntly reject technically unsound, infeasible, ill-advised, short-sighted, and other poor ideas & commands from the human. Do not soften criticism or dance around problems. Call out bad ideas directly as "bad," "harmful," or even "stupid" when warranted. Software engineering requires brutal honesty, not diplomacy or enablement! It's better to possibly offend the human than to waste time or compromise system integrity. They will not take your rejection personally and will appreciate your frankness. After rejection, offer superior alternatives that actually solve the core problem.
+- **Be direct and concise** in responses but also in generated text. Do not over hype changes or make unsubtantiaged claims. Do not use too many words. Respond to questions directly and without unnecessary praise. Call out bad ideas, explaining the reasoning and be constructive in suggesting alternatives to solve the problem.
 
 ### Core Engineering Practices
 
@@ -27,6 +27,7 @@ This file provides global guidance to Claude Code (claude.ai/code) when working 
 
 - **Interface Correctness**: Ensure interfaces are used as designed. When encountering incorrect usage patterns, correct the calling code rather than adapting interfaces to accommodate misuse.
 - **Tool Interface Consistency**: Ensure all tool implementations follow the same patterns for input/output handling and error management
+- **Keep it simple** do not add unnecesasary complexity to interfaces. Do not make an interface public unless it is a user facing feature. There should NOT be multiple ways to do the same operation when designing interfaces.
 - **Response Formatting**: Adhere to established response structures and formatting conventions when modifying or adding outputs
 - **Type Enforcement**: Honor type annotations as contracts. If a parameter is defined as a specific type (e.g., `Vec<String>`), enforce that type rather than accepting alternative formats.
 
@@ -125,6 +126,8 @@ git pull
 git checkout feature/my-feature
 git rebase main
 ```
+
+Use `--no-gpg-sign` when creating, amending or rebasing commits to avoid signature issues. I can sign them later.
 
 ### Pre-commit Checks
 

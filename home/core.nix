@@ -109,8 +109,9 @@
   # Prettier
   home.file.".prettierrc.json".source = ../dotfiles/prettierrc.json;
 
-  # Global CLAUDE.md for git workflow guidance
+  # Global CLAUDE.md and settings
   home.file.".claude/CLAUDE.md".source = ../dotfiles/CLAUDE.md;
+  home.file.".claude/settings.json".source = ../dotfiles/claude-settings.json;
 
   # Avoid bugs with npm like https://github.com/NixOS/nixpkgs/issues/16441
   home.file.".npmrc".text = lib.generators.toINIWithGlobalSection {} {
