@@ -1,6 +1,7 @@
 {
   lib,
-  pkgs,
+  username,
+  useremail,
   ...
 }: {
   # `programs.git` will generate the config file: ~/.config/git/config
@@ -13,11 +14,11 @@
 
   programs.git = {
     enable = true;
-    # lfs.enable = true;
-    package = pkgs.gitAndTools.gitFull;
+    lfs.enable = true;
 
-    userName = "Felipe Lalanne";
-    userEmail = "felipe@balena.io";
+    # TODO replace with your own name & email
+    userName = username;
+    userEmail = useremail;
 
     ignores = [
       ".DS_Store"
@@ -28,18 +29,9 @@
       ".devenv*"
     ];
 
-    # includes = [
-    #   {
-    #     # use diffrent email & name for work
-    #     path = "~/work/.gitconfig";
-    #     condition = "gitdir:~/work/";
-    #   }
-    # ];
-
     extraConfig = {
       core = {
         editor = "nvim";
-        # pager = "cat";
       };
       color = {
         ui = true;

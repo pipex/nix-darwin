@@ -50,6 +50,11 @@
 
     lazygit # Git TUI
 
+    # Gems
+    (pkgs.ruby.withPackages (ps: with ps; [
+      doing # task tracking on the command line 
+    ]))
+
     (callPackage ../pkgs/balena-cli.nix {
       version = "20.0.7";
       hash = "0hw9k006jzf26f9kv346g1sn3s0rjz1k692n1114nqqlh0jsqx80";

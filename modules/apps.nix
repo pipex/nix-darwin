@@ -1,14 +1,15 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   ##########################################################################
   #
   #  Install all apps and packages here.
   #
-  #  NOTE: Your can find all available options in:
-  #    https://daiderd.com/nix-darwin/manual/index.html
-  #
-  # Feel free to modify this file to fit your needs.
+  # TODO Fell free to modify this file to fit your needs.
   #
   ##########################################################################
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Install packages from nix's official package repository.
   #
@@ -19,10 +20,11 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
+    just # use Justfile to simplify nix-darwin's commands
   ];
-  environment.variables.EDITOR = "nano";
+  environment.variables.EDITOR = "nvim";
 
-  # To make this work, homebrew need to be installed manually, see https://brew.sh
+  # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   #
   # The apps installed by homebrew are not managed by nix, and not reproducible!
   # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
@@ -30,8 +32,9 @@
     enable = true;
 
     onActivation = {
-      autoUpdate = false;
-      # 'zap': uninstalls all formulae(and related files) not listed here.
+      autoUpdate = true; # Fetch the newest stable branch of Homebrew's git repo
+      upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
+      # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
       cleanup = "zap";
     };
 
@@ -42,13 +45,7 @@
     masApps = {
       # TODO Feel free to add your favorite apps here.
 
-      # Xcode = 497799835;
-      # Wechat = 836500024;
-      # NeteaseCloudMusic = 944848654;
-      # QQ = 451108668;
-      # WeCom = 1189898970;  # Wechat for Work
-      # TecentMetting = 1484048379;
-      # QQMusic = 595615424;
+      Xcode = 497799835;
       Bitwarden = 1352778147;
       Magnet = 441258766;
       JoltOfCaffeine = 1437130425;
@@ -72,18 +69,16 @@
     # `brew install --cask`
     casks = [
       "balenaetcher"
-      # "bitwarden"
       "cloudflare-warp"
       "docker"
       "ungoogled-chromium"
-      "logseq"
       "raycast"
       "signal"
       "tailscale"
       "zoom"
       "appcleaner"
       "iterm2"
-      "wireshark"
+      "wireshark-app"
       {
         name = "librewolf"; 
         args = { no_quarantine = true; };

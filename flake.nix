@@ -10,8 +10,6 @@
 
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
-    experimental-features = ["nix-command" "flakes"];
-
     substituters = [
       "https://cache.nixos.org"
     ];
@@ -20,12 +18,13 @@
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # home-manager, used for managing user configuration
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs dependencies.
@@ -33,20 +32,8 @@
     };
 
     darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
-    };
-
-    # # https://github.com/jordanisaacs/homeage
-    # homeage = {
-    #   url = "github:jordanisaacs/homeage";
-    #   inputs.nixpkgs.follows = "nixpkgs-darwin";
-    # };
-
-    # https://github.com/jordanisaacs/homeage/pull/43
-    homeage = {
-      url = "github:jordanisaacs/homeage/pull/43/head";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -61,13 +48,22 @@
     nixpkgs-unstable,
     darwin,
     home-manager,
-    homeage,
     ...
   }: let
-    system = "aarch64-darwin";
+    # TODO replace with your own username, email, system, and hostname
+    username = "felipe";
+    useremail = "felipe@balena.io";
+    system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
+    hostname = "ceres";
+
+    specialArgs =
+      inputs
+      // {
+        inherit username useremail hostname;
+      };
   in {
-    darwinConfigurations.ceres = darwin.lib.darwinSystem {
-      inherit system;
+    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
+      inherit system specialArgs;
       modules = [
         ./modules/nix-core.nix
         ./modules/system.nix
@@ -85,19 +81,18 @@
             })
           ];
         })
-
         # home manager
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = inputs;
-          home-manager.users.felipe = import ./home;
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.users.${username} = import ./home;
         }
       ];
     };
 
-    # nix code formmater
-    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
+    # nix code formatter
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
 }

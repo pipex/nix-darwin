@@ -1,15 +1,12 @@
-{homeage, ...}: let
-  username = "felipe";
-in {
+{ username, ... }:
+
+{
   # import sub modules
   imports = [
-    homeage.homeManagerModules.homeage
-    ./bash.nix
+    ./shell.nix
     ./core.nix
     ./git.nix
-    ./secrets.nix
     ./starship.nix
-    ./zsh.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -26,7 +23,7 @@ in {
     # You can update Home Manager without changing this value. See
     # the Home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "24.05";
+    stateVersion = "25.05";
   };
 
   # Let Home Manager install and manage itself.
