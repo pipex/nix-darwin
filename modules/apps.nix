@@ -52,7 +52,6 @@
       Bitwarden = 1352778147;
       Magnet = 441258766;
       JoltOfCaffeine = 1437130425;
-      Pocket = 1477385213;
       DuckDuckGoSafari = 1482920575;
     };
 
@@ -66,7 +65,6 @@
       "diffutils" # diff tool
       "mas" # Mac App Store CLI
       "podman"
-      "mosh"
       "pinentry-mac"
       "ykman"
     ];
@@ -77,7 +75,7 @@
       # "bitwarden"
       "cloudflare-warp"
       "docker"
-      "eloston-chromium"
+      "ungoogled-chromium"
       "logseq"
       "raycast"
       "signal"
