@@ -4,20 +4,22 @@
   version,
   hash,
 }:
-pkgs.stdenv.mkDerivation rec {
+pkgs.stdenv.mkDerivation {
   name = "balena-cli";
 
-  src = pkgs.fetchzip {
-    url = "https://github.com/balena-io/balena-cli/releases/download/v${version}/balena-cli-v${version}-macOS-arm64-standalone.zip";
+  src = pkgs.fetchurl {
+    url = "https://github.com/balena-io/balena-cli/releases/download/v${version}/balena-cli-v${version}-macOS-arm64-standalone.tar.gz";
     sha256 = "${hash}";
-    # url = "https://ab77.s3.amazonaws.com/balena-cli-v18.1.0-macOS-arm64-standalone.zip";
-    # sha256 = "sha256-/Kvp81qOYzpTkWECePg+MM7EW4FxqEKqimdVqPlyAsE=";
   };
 
+  unpackPhase = ''
+    tar -xzf $src
+  '';
+
   installPhase = ''
-    mkdir -p $out/balena-cli
     mkdir -p $out/bin
-    cp -r * $out/balena-cli
-    ln -s $out/balena-cli/balena $out/bin/balena
+    mv balena $out/balena-cli
+    chmod +x $out/balena-cli/bin/balena
+    ln -s $out/balena-cli/bin/balena $out/bin/balena
   '';
 }

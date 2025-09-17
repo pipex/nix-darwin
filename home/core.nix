@@ -56,8 +56,8 @@
     ]))
 
     (callPackage ../pkgs/balena-cli.nix {
-      version = "20.0.7";
-      hash = "0hw9k006jzf26f9kv346g1sn3s0rjz1k692n1114nqqlh0jsqx80";
+      version = "22.4.5";
+      hash = "11y9zjy6jv1411mpkxggj2hnq82kcxlf41np3vc8i4s110qjlsw9";
     })
 
     # (pkgs.callPackage ../pkgs/shell-gpt.nix {
@@ -94,8 +94,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "4b9ee75";
-    sha256 = "1a1kri4al6pgvdj4yl58vqyh40jbllh0nzkdkxqrslw7p5646hq2";
+    rev = "774f0e7";
+    sha256 = "090ifkhacvsy6r5n896jxqcsq9z1sjjraqhjbysa4rzx9ar4sf6c";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 
