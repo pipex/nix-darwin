@@ -64,6 +64,7 @@
       "podman"
       "pinentry-mac"
       "ykman"
+      "trufflehog"
     ];
 
     # `brew install --cask`
@@ -77,7 +78,7 @@
       "tailscale"
       "zoom"
       "appcleaner"
-      "iterm2"
+      "ghostty"
       "wireshark-app"
       {
         name = "librewolf"; 
