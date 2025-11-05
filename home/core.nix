@@ -40,10 +40,7 @@
 
     # productivity
     glow # markdown previewer in terminal
-
-    # We need to use unstable tmux because of
-    # https://github.com/tmux/tmux/issues/3983
-    unstable.tmux
+    tmux
 
     git-crypt # transparent file encryption in git
     htop # interactive process viewer
@@ -85,6 +82,7 @@
     colima
     docker
     kubectl
+    k9s
 
     unstable.qemu
   ];

@@ -58,6 +58,9 @@ keybind = super+ctrl+arrow_down=text:\x01\x1b\x5b\x31\x3b\x35\x42
 keybind = super+ctrl+arrow_left=text:\x01\x1b\x5b\x31\x3b\x35\x44
 keybind = super+ctrl+arrow_right=text:\x01\x1b\x5b\x31\x3b\x35\x43
 
+# Go to full-screen
+keybind = super+shift+enter=text:\x01\x2b
+
 # Move between tabs
 keybind = ctrl+tab=text:\x01\x3e
 keybind = ctrl+shift+tab=text:\x01\x3c
