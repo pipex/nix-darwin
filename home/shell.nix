@@ -6,7 +6,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    autocd = true;
+    autocd = false;
 
     # # https://checkoway.net/musings/nix/
     # envExtra = ''
@@ -60,11 +60,13 @@
       }
     '';
 
+    zprof = {
+      enable = false;
+    };
+
     oh-my-zsh = {
       enable = true;
-      plugins = ["git docker"];
       custom = "${config.xdg.configHome}/oh-my-zsh";
-      theme = "pipex";
       extraConfig = ''
         DISABLE_MAGIC_FUNCTIONS="true";
       '';

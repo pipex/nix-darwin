@@ -77,6 +77,7 @@
     hadolint # Dockerfile linter, validate inline bash scripts
     luarocks # Lua linter
     nixd
+    protobuf
 
     # Docker VM and CLI
     colima
@@ -92,8 +93,8 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "pipex";
     repo = "astrovim";
-    rev = "774f0e7";
-    sha256 = "090ifkhacvsy6r5n896jxqcsq9z1sjjraqhjbysa4rzx9ar4sf6c";
+    rev = "91ba341";
+    sha256 = "03g7l071cw344hcjw613hb1x4y4wysbx82l3fd0i1n925i43xpid";
   };
   # xdg.configFile."nvim".source = ../dotfiles/astronvim;
 

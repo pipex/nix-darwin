@@ -44,8 +44,7 @@
     # For details, see https://github.com/mas-cli/mas
     masApps = {
       # TODO Feel free to add your favorite apps here.
-
-      Xcode = 497799835;
+      # Xcode = 497799835;
       Bitwarden = 1352778147;
       Magnet = 441258766;
       JoltOfCaffeine = 1437130425;
@@ -54,6 +53,7 @@
 
     taps = [
       "homebrew/services"
+      "slp/krunkit"
     ];
 
     # `brew install`
@@ -74,7 +74,6 @@
       "docker"
       "ungoogled-chromium"
       "raycast"
-      "signal"
       "tailscale"
       "zoom"
       "appcleaner"

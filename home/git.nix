@@ -1,6 +1,6 @@
 {
   lib,
-  username,
+  fullname,
   useremail,
   ...
 }: {
@@ -17,7 +17,7 @@
     lfs.enable = true;
 
     # TODO replace with your own name & email
-    userName = username;
+    userName = fullname;
     userEmail = useremail;
 
     ignores = [

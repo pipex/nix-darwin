@@ -51,6 +51,7 @@
     ...
   }: let
     # TODO replace with your own username, email, system, and hostname
+    fullname = "Felipe Lalanne";
     username = "felipe";
     useremail = "felipe@balena.io";
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
@@ -59,7 +60,7 @@
     specialArgs =
       inputs
       // {
-        inherit username useremail hostname;
+        inherit username useremail hostname fullname;
       };
   in {
     darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
