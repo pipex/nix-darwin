@@ -16,10 +16,6 @@
     enable = true;
     lfs.enable = true;
 
-    # TODO replace with your own name & email
-    userName = fullname;
-    userEmail = useremail;
-
     ignores = [
       ".DS_Store"
       "*.pyc"
@@ -29,56 +25,40 @@
       ".devenv*"
     ];
 
-    extraConfig = {
-      core = {
-        editor = "nvim";
-      };
-      color = {
-        ui = true;
-      };
-      push = {
-        default = "current";
-        autoSetupRemote = true;
-      };
-      pull = {
-        ff = "only";
-        rebase = true;
-      };
-      init = {
-        defaultBranch = "main";
-      };
-    };
-
     signing = {
       key = "03E696BFD472B26A";
       signByDefault = true;
     };
 
-    # https://nix-community.github.io/home-manager/options.html#opt-programs.git.delta.enable
-    # https://github.com/dandavison/delta
-    delta = {
-      enable = true;
-      # options = {
-      #   features = "side-by-side";
-      # };
-    };
+    settings = {
+      user.name = fullname;
+      user.email = useremail;
 
-    aliases = {
-      # common aliases
-      br = "branch";
-      co = "checkout";
-      st = "status";
-      ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
-      ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
-      lg = "log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all";
-      cm = "commit -m";
-      ca = "commit -am";
-      dc = "diff --cached";
-      amend = "commit --amend '-S'";
+      core.editor = "nvim";
+      color.ui = true;
+      init.defaultBranch = "main";
+      trim.bases = "develop,master,main"; # for git-trim
+      push.autoSetupRemote = true;
+      pull.rebase = true;
+      log.date = "iso"; # use iso format for date
 
-      # aliases for submodule
-      update = "submodule update --init --recursive";
-      foreach = "submodule foreach";
+      alias = {
+        # common aliases
+        br = "branch";
+        co = "checkout";
+        st = "status";
+        ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
+        ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
+        lg = "log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all";
+        cm = "commit -m";
+        ca = "commit -am";
+        dc = "diff --cached";
+        amend = "commit --amend '-S'";
+
+        # aliases for submodule
+        update = "submodule update --init --recursive";
+        foreach = "submodule foreach";
+      };
     };
   };
 }
