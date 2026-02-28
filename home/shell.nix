@@ -1,23 +1,9 @@
-{config, pkgs, ...}: {
-    programs.zsh = {
-    enable = true;
+{ ... }: {
+  programs.zsh = {
+    oh-my-zsh.plugins = [ "docker" ];
 
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    autocd = false;
-
-    # # https://checkoway.net/musings/nix/
-    # envExtra = ''
-    #   [[ -o login ]] && export PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
-    # '';
-
-    # https://checkoway.net/musings/nix/
     profileExtra = ''
-      # Set PATH, MANPATH, etc., for Homebrew.
       eval "$(/opt/homebrew/bin/brew shellenv)"
-
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.npm/bin:$HOME/.cargo/bin"
     '';
 
@@ -60,51 +46,9 @@
       }
     '';
 
-    zprof = {
-      enable = false;
-    };
-
-    oh-my-zsh = {
-      enable = true;
-      custom = "${config.xdg.configHome}/oh-my-zsh";
-      extraConfig = ''
-        DISABLE_MAGIC_FUNCTIONS="true";
-      '';
-    };
-
     shellAliases = {
       balena-staging = "BALENARC_BALENA_URL=balena-staging.com BALENARC_DATA_DIRECTORY=~/.balenaStaging balena";
       balena-support = "BALENARC_DATA_DIRECTORY=~/.balenaSupport balena";
-      vi = "nvim";
-      lg = "lazygit";
-      cd = "z";
     };
-
-    localVariables = {
-      TZ = "America/Santiago";
-      EDITOR = "nvim";
-      BALENARC_NO_ANALYTICS = "1";
-    };
-
-    plugins = [
-      {
-        name = "zsh-nix-shell";
-        file = "nix-shell.plugin.zsh";
-        src = pkgs.fetchFromGitHub {
-          owner = "chisui";
-          repo = "zsh-nix-shell";
-          rev = "v0.8.0";
-          sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
-        };
-      }
-    ];
-  };
-
-  home.shellAliases = {
-    balena-staging = "BALENARC_BALENA_URL=balena-staging.com BALENARC_DATA_DIRECTORY=~/.balenaStaging balena";
-      balena-support = "BALENARC_DATA_DIRECTORY=~/.balenaSupport balena";
-      vi = "nvim";
-      lg = "lazygit";
-      cd = "z";
   };
 }

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -11,16 +7,14 @@
     p7zip
 
     # utils
-    coreutils # GNU core utilities
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq-go # yaml processer https://github.com/mikefarah/yq
-    gnugrep # GNU grep, egrep and fgrep
-    # bitwarden-cli # Access passwords from the command line
-
-    aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    socat # replacement of openbsd-netcat
-    nmap # A utility for network discovery and security auditing
+    coreutils
+    ripgrep
+    jq
+    yq-go
+    gnugrep
+    aria2
+    socat
+    nmap
     curl
 
     # misc
@@ -42,14 +36,13 @@
     glow # markdown previewer in terminal
     tmux
 
-    git-crypt # transparent file encryption in git
-    htop # interactive process viewer
+    git-crypt
+    htop
+    lazygit
+    bottom
 
-    lazygit # Git TUI
-
-    # Gems
     (pkgs.ruby.withPackages (ps: with ps; [
-      doing # task tracking on the command line 
+      doing
     ]))
 
     (callPackage ../pkgs/balena-cli.nix {
@@ -57,25 +50,18 @@
       hash = "11y9zjy6jv1411mpkxggj2hnq82kcxlf41np3vc8i4s110qjlsw9";
     })
 
-    # (pkgs.callPackage ../pkgs/shell-gpt.nix {
-    #   version = "1.4.3";
-    #   hash = "1ip4216ypjk8p0p69frg006gnl571gfarc6irl63hsln3cmxjz2a";
-    # })
-    bottom # process viewer
-    gdu # go disk analyzer
-
     # Programming
-    nodejs_22 # A JavaScript runtime built on Chrome's V8 JavaScript engine
+    nodejs_22
     bun
-    shellcheck # shell script analysis tool
-    shfmt # A shell parser, formatter, and interpreter (POSIX/Bash/mksh)
-    rustup # Rust updater
-    alejandra # The Uncompromising Nix Code Formatter
-    deadnix # Nix
-    statix # Nix
-    go # Golang
-    hadolint # Dockerfile linter, validate inline bash scripts
-    luarocks # Lua linter
+    shellcheck
+    shfmt
+    rustup
+    alejandra
+    deadnix
+    statix
+    go
+    hadolint
+    luarocks
     nixd
     protobuf
 
@@ -88,27 +74,11 @@
     unstable.qemu
   ];
 
-  # Install AstroVim
-  xdg.configFile."nvim".recursive = true;
-  xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
-    owner = "pipex";
-    repo = "astrovim";
-    rev = "91ba341";
-    sha256 = "03g7l071cw344hcjw613hb1x4y4wysbx82l3fd0i1n925i43xpid";
-  };
-  # xdg.configFile."nvim".source = ../dotfiles/astronvim;
+  # Use the unstable neovim build on darwin
+  programs.neovim.package = pkgs.unstable.neovim-unwrapped;
 
-  xdg.configFile."oh-my-zsh".source = ../dotfiles/oh-my-zsh;
-
-  home.file.".tmux.conf".source = ../dotfiles/tmux/tmux.conf;
-  home.file.".tmux".recursive = true;
-  home.file.".tmux".source = ../dotfiles/tmux;
-  home.file.".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
-    owner = "tmux-plugins";
-    repo = "tpm";
-    rev = "v3.0.0";
-    sha256 = "18q5j92fzmxwg8g9mzgdi5klfzcz0z01gr8q2y9hi4h4n864r059";
-  };
+  # Ghostty
+  home.file."Library/Application Support/com.mitchellh.ghostty/config".source = ../dotfiles/ghostty-config;
 
   # Prettier
   home.file.".prettierrc.json".source = ../dotfiles/prettierrc.json;
@@ -116,72 +86,4 @@
   # Global CLAUDE.md and settings
   home.file.".claude/CLAUDE.md".source = ../dotfiles/CLAUDE.md;
   home.file.".claude/settings.json".source = ../dotfiles/claude-settings.json;
-
-  # Avoid bugs with npm like https://github.com/NixOS/nixpkgs/issues/16441
-  home.file.".npmrc".text = lib.generators.toINIWithGlobalSection {} {
-    globalSection = {
-      prefix = "~/.npm";
-    };
-  };
-
-  # Ghostty
-  home.file."Library/Application Support/com.mitchellh.ghostty/config".source = ../dotfiles/ghostty-config;
-
-  programs = {
-    # modern vim
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      vimAlias = true;
-      package = pkgs.unstable.neovim-unwrapped;
-    };
-
-    # A modern replacement for ‘ls’
-    # useful in bash/zsh prompt, not in nushell.
-    eza = {
-      enable = true;
-      enableZshIntegration = true;
-      enableBashIntegration = true;
-      git = true;
-      icons = "auto";
-    };
-
-    # skim provides a single executable: sk.
-    # Basically anywhere you would want to use grep, try sk instead.
-    skim = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-    };
-
-    gh = {
-      enable = true;
-      settings.git_protocol = "ssh";
-      gitCredentialHelper.enable = true;
-    };
-
-    zoxide = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-    };
-
-    gpg = {
-      enable = true;
-    };
-
-    direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      nix-direnv = {
-        enable = true;
-      };
-    };
-
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-  };
 }

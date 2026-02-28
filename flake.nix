@@ -22,6 +22,9 @@
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    # NixOS
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -45,15 +48,18 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixpkgs-darwin,
     nixpkgs-unstable,
     darwin,
     home-manager,
     ...
   }: let
-    # TODO replace with your own username, email, system, and hostname
+    # Shared identity
     fullname = "Felipe Lalanne";
     username = "felipe";
     useremail = "felipe@balena.io";
+
+    # Darwin config
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
     hostname = "ceres";
 
@@ -62,6 +68,32 @@
       // {
         inherit username useremail hostname fullname;
       };
+
+    # SSH public keys shared across all NixOS servers (password auth is disabled)
+    sshKeys = [
+      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBChyWFF1BmSdrvKR/ExZtQVfxvCwauWB/5E7vD2Fu0G3PN9ud4DK02RFMKGe43bjIzQUzXsv3+b1Vv1YypPiDOE= felipe@ipad"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESnsaukXTbFf2xLENvpTFwS/zSk8jNMshUYW+pWz1BQ felipe@balena.io"
+    ];
+
+    mkNixosConfig = { hostname, system }: let
+      specialArgs = inputs // { inherit fullname username useremail hostname sshKeys; };
+    in nixpkgs.lib.nixosSystem {
+      inherit system specialArgs;
+      modules = [
+        ./nixos/modules/nix-core.nix
+        ./nixos/modules/users.nix
+        ./nixos/modules/packages.nix
+        ./nixos/modules/ssh.nix
+        ./nixos/hosts/${hostname}/hardware-configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.users.${username} = import ./nixos/home;
+        }
+      ];
+    };
   in {
     darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
       inherit system specialArgs;
@@ -93,7 +125,14 @@
       ];
     };
 
-    # nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    nixosConfigurations = {
+      phobos = mkNixosConfig { hostname = "phobos"; system = "x86_64-linux"; };
+      deimos = mkNixosConfig { hostname = "deimos"; system = "aarch64-linux"; };
+    };
+
+    # nix code formatters
+    formatter.aarch64-darwin = nixpkgs-darwin.legacyPackages.aarch64-darwin.alejandra;
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
   };
 }
