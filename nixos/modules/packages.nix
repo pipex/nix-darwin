@@ -1,7 +1,16 @@
 { pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
+  fonts.packages = with pkgs; [
+    material-design-icons
+    font-awesome
+    nerd-fonts.sauce-code-pro
+  ];
+
   environment.systemPackages = with pkgs; [
+    # ghostty terminfo (for SSH sessions from ghostty)
+    ghostty.terminfo
+
     # archives
     zip
     xz

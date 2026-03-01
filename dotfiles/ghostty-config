@@ -25,7 +25,9 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-font-family = SauceCodePro NF 
+font-family = SauceCodePro NF
+clipboard-read = allow
+clipboard-write = allow
 font-size = 13
 theme = Catppuccin Mocha
 background-opacity = 0.95

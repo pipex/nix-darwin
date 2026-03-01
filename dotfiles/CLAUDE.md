@@ -73,7 +73,7 @@ Change-type: minor
 
 ### Semantic Versioning Guidelines
 
-Follow semantic versioning (semver) principles when determining change types:
+Follow semantic versioning (semver) principles when determining change type as described below. **Important**, if the current project version is below v1.0.0, then breaking changes should be minor version bumps and new-features and fixes should be patch version bumps.
 
 **MAJOR version** (`Change-type: major`) when you make incompatible API changes:
 

@@ -80,6 +80,7 @@
     in nixpkgs.lib.nixosSystem {
       inherit system specialArgs;
       modules = [
+        ./nixos/modules/system.nix
         ./nixos/modules/nix-core.nix
         ./nixos/modules/users.nix
         ./nixos/modules/packages.nix
