@@ -85,6 +85,7 @@
         ./nixos/modules/users.nix
         ./nixos/modules/packages.nix
         ./nixos/modules/ssh.nix
+        ./nixos/modules/tailscale.nix
         ./nixos/hosts/${hostname}/hardware-configuration.nix
         home-manager.nixosModules.home-manager
         {
