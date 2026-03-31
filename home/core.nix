@@ -46,8 +46,8 @@
     ]))
 
     (callPackage ../pkgs/balena-cli.nix {
-      version = "22.4.5";
-      hash = "11y9zjy6jv1411mpkxggj2hnq82kcxlf41np3vc8i4s110qjlsw9";
+      version = "24.0.3";
+      hash = "1w6rma90w8yl9l88dgb2barkasjvrl8m69lgsanbl4wym6hqmr96";
     })
 
     # Programming
@@ -66,7 +66,6 @@
     protobuf
 
     # Docker VM and CLI
-    colima
     docker
     kubectl
     k9s

@@ -71,10 +71,10 @@
     casks = [
       "balenaetcher"
       "cloudflare-warp"
-      "docker"
+      "docker-desktop"
       "ungoogled-chromium"
       "raycast"
-      "tailscale"
+      "tailscale-app"
       "zoom"
       "appcleaner"
       "ghostty"
