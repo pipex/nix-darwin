@@ -1,0 +1,4 @@
+{
+	"minimumPackageAgeHours": 24,
+	"minimumPackageAgeExclusions": ["@balena/*", "balena-cli", "balena-sdk"]
+}

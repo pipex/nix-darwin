@@ -48,7 +48,7 @@
       Bitwarden = 1352778147;
       Magnet = 441258766;
       JoltOfCaffeine = 1437130425;
-      DuckDuckGoSafari = 1482920575;
+      # DuckDuckGoSafari = 1482920575;
     };
 
     taps = [
@@ -71,7 +71,7 @@
     casks = [
       "balenaetcher"
       "cloudflare-warp"
-      "docker-desktop"
+      # "docker-desktop"
       "ungoogled-chromium"
       "raycast"
       "tailscale-app"

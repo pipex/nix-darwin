@@ -50,8 +50,10 @@
       hash = "1w6rma90w8yl9l88dgb2barkasjvrl8m69lgsanbl4wym6hqmr96";
     })
 
+    (callPackage ../pkgs/safe-chain.nix {})
+
     # Programming
-    nodejs_22
+    nodejs_24
     bun
     shellcheck
     shfmt
@@ -84,5 +86,7 @@
 
   # Global CLAUDE.md and settings
   home.file.".claude/CLAUDE.md".source = ../dotfiles/CLAUDE.md;
-  home.file.".claude/settings.json".source = ../dotfiles/claude-settings.json;
+
+  # Safe-chain config
+  home.file.".safe-chain/config.json".source = ../dotfiles/safe-chain-config.json;
 }
