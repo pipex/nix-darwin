@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -89,4 +89,10 @@
 
   # Safe-chain config
   home.file.".safe-chain/config.json".source = ../dotfiles/safe-chain-config.json;
+
+  home.activation.safe-chain-setup = config.lib.dag.entryAfter ["writeBoundary"] ''
+    if command -v safe-chain &> /dev/null; then
+      run safe-chain setup 2>/dev/null || true
+    fi
+  '';
 }

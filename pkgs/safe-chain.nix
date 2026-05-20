@@ -15,7 +15,6 @@ pkgs.stdenv.mkDerivation rec {
     mkdir -p $out/bin
     cp $src $out/bin/safe-chain
     chmod +x $out/bin/safe-chain
-    $out/bin/safe-chain setup
   '';
 
   meta = with pkgs.lib; {
