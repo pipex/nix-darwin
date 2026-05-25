@@ -12,7 +12,7 @@
       export BUILDKIT_PROGRESS=plain
 
       # safe-chain: wraps npm/yarn/pnpm/bun/pip/uv with supply-chain attack protection
-      [ -f "$HOME/.safe-chain/scripts/init-posix.sh" ] && source "$HOME/.safe-chain/scripts/init-posix.sh"
+      [ -f "$HOME/.cache/safe-chain/current/scripts/init-posix.sh" ] && source "$HOME/.cache/safe-chain/current/scripts/init-posix.sh"
     '';
 
     shellAliases = {
